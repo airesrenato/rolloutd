@@ -136,8 +136,8 @@
                                                 </div>
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" class="form-control" name="PatrimonioAntigo" >
-                                                        <label class="form-label">Patrimônio</label>
+                                                        <input type="text" class="form-control" name="VCAntigo" >
+                                                        <label class="form-label">VC Antigo</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group form-float">
