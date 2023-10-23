@@ -1,38 +1,46 @@
 <?php
     class Atendimento {
         private $idAtendimento;
-        private $Responsável;
-        private $Email;
+        //private $Responsável;
+        //private $Email;
         private $Departamento;
         private $Localidade;
         private $Backup;
         private $Dia;
         private $Termo;
+        private $FtColaboradorEquipamento;
+        private $FtLogado;
+        private $StatusAtendimento;
        // private $Observação;
         private $Antigo;
         private $Novo;
         private $idTecnico;
+        private $idColaborador;
 
 
-        function __construct($_idAtendimento, $_Responsavel, $_Email, $_Departamento, $_Localidade, $_Backup, $_Dia, $_Termo, $_Antigo, $_Novo, $_idTecnico){
+        function __construct($_idAtendimento, $_Departamento, $_Localidade, $_Backup, $_Dia, $_Termo, $_FtColaboradorEquipamento, $_FtLogado, $_StatusAtendimento, $_Antigo, $_Novo, $_idTecnico, $_idColaborador){
             $this->idAtendimento = $_idAtendimento;
-            $this->Responsavel = $_Responsavel;
-            $this->Email = $_Email;
+            //$this->Responsavel = $_Responsavel;
+            //$this->Email = $_Email;
             $this->Departamento = $_Departamento;
             $this->Localidade = $_Localidade;
             $this->Backup = $_Backup;
             $this->Dia = $_Dia;
             $this->Termo = $_Termo;
+            $this->FtColaboradorEquipamento = $_FtColaboradorEquipamento;
+            $this->FtLogado = $_FtLogado;
+            $this->StatusAtendimento = $_StatusAtendimento;
            // $this->Observacao = $_Observacao;
             $this->Antigo = $_Antigo;
             $this->Novo = $_Novo;
             $this->idTecnico = $_idTecnico;
+            $this->idColaborador = $_idColaborador;
         }
 
         public function GetidAtendimento():int{
             return $this->idAtendimento;
         }
-        public function GetResponsavel():string{
+        /*public function GetResponsavel():string{
             return $this->Responsavel;
         }
         public function SetResponsavel($_Responsavel):void{
@@ -43,7 +51,7 @@
         }
         public function SetEmail($_Email):void{
             $this->Email = $_Email;
-        }
+        }*/
         public function GetDepartamento():string{
             return $this->Departamento;
         }
@@ -74,6 +82,25 @@
         public function SetTermo($_Termo):void{
             $this->Termo = $_Termo;
         }
+        public function GetFtColaboradorEquipamento():string{
+            return $this->FtColaboradorEquipamento;
+        }
+        public function SetFtColaboradorEquipamento($_FtColaboradorEquipamento):void{
+            $this->FtColaboradorEquipamento = $_FtColaboradorEquipamento;
+        }
+        public function GetFtLogado():string{
+            return $this->FtLogado;
+        }
+        public function SetFtLogado($_FtLogado):void{
+            $this->FtLogado = $_FtLogado;
+        }
+        public function GetStatusAtendimento():string{
+            return $this->StatusAtendimento;
+        }
+        public function SetStatusAtendimento($_StatusAtendimento):void{
+            $this->StatusAtendimento = $_StatusAtendimento;
+        }
+
       /*
         public function GetObservacao():string{
             return $this->Observacao;
@@ -100,9 +127,15 @@
         public function SetidTecnico($_idTecnico):void{
             $this->idTecnico = $_idTecnico;
         }
+        public function GetidColaborador():int{
+            return $this->idColaborador;
+        }
+        public function SetidColaborador($_idColaborador):void{
+            $this->idColaborador = $_idColaborador;
+        }
 
         public function InsereAtendimento($link){
-            $query="INSERT INTO Atendimento VALUES(NULL,'".$this->Responsavel."','".$this->Email."','".$this->Departamento."','".$this->Localidade."','".$this->Backup."','".$this->Dia."','".$this->Termo."',".$this->Antigo.",".$this->Novo.",".$this->idTecnico.")";
+            $query="INSERT INTO Atendimento VALUES(NULL,'".$this->Departamento."','".$this->Localidade."','".$this->Backup."','".$this->Dia."','".$this->Termo."','".$this->FtColaboradorEquipamento."','".$this->FtLogado."','".$this->StatusAtendimento."',".$this->Antigo.",".$this->Novo.",".$this->idTecnico.",".$this->idColaborador.")";
             $link->query($query);
             $this->idAtendimento = $link->insert_id;
         }
