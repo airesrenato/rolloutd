@@ -28,7 +28,7 @@
             return $this->idEquipamento;
         }
 
-        public function GetModelo():int{
+        public function GetModelo():string{
             return $this->Modelo;
         }
         public function SetModelo($_Modelo):void{
@@ -92,6 +92,28 @@
             }else{
                 return FALSE;
             }
+        }
+        public function GetEquipamento($link){
+            $query = "SELECT * FROM equipamento WHERE idEquipamento = $this->idEquipamento ";
+            $resultado= $link->query($query) or die ($link->error);
+            $linha = $resultado->fetch_array();
+
+            $this->idEquipamento = $linha['idEquipamento'];
+            $this->Modelo = $linha['Modelo'];
+            $this->VC = $linha['VC'];
+            $this->ServiceTag = $linha['ServiceTag'];
+            $this->Tipo = $linha['Tipo'];
+            $this->Localizacao = $linha['Localizacao'];
+            $this->Situacao = $linha['Situacao'];
+            $this->Observacao = $linha['Observacao'];
+
+
+        }
+
+        public function AlteraEquipamento($link){
+           $query="UPDATE Equipamento SET Modelo = '$this->Modelo', VC = '$this->VC', ServiceTag = '$this->ServiceTag', Tipo = '$this->Tipo', Localizacao = '$this->Localizacao', Situacao = '$this->Situacao', Observacao = '$this->Observacao' WHERE idEquipamento = $this->idEquipamento";
+           echo $query;
+           $link->query($query) or die($link->error);
         }
     }
 

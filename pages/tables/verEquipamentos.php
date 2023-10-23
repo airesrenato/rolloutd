@@ -147,6 +147,7 @@
                                                     <td>".$linha["Localizacao"]."</td> 
                                                     <td>".$linha["Situacao"]."</td> 
                                                     <td>".$linha["Observacao"]."</td>   
+                                                    <td> <a href='http://localhost/infoprime/rolloutd/pages/forms/alterarEquipamento.php?idEquipamento=".$linha["idEquipamento"]."'>Editar</td> 
                                                     </tr>";
                                             }
                                         ?> 
