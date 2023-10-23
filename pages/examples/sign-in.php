@@ -37,7 +37,7 @@
         </div>
         <div class="card">
             <div class="body">
-            <form id="sign_in" method="POST" action="../../Login.php">
+            <form id="sign_in" method="POST" action="../../metodos/Login.php">
                     <div class="msg">Entre com seu usuário e sua senha.</div>
                     <div class="input-group">
                         <span class="input-group-addon">

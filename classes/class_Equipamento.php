@@ -80,6 +80,7 @@
 
         public function InsereEquipamento($link){
             $query="INSERT INTO equipamento VALUES(NULL,'".$this->Modelo."','".$this->VC."','".$this->ServiceTag."','".$this->Tipo."','".$this->Localizacao."','".$this->Situacao."','".$this->Observacao."')";
+           // echo $query;
             $link->query($query) or die ($link->error);
             $this->idEquipamento = $link->insert_id;
         }

@@ -49,6 +49,13 @@
         public function SetMatricula($_Matricula):void{
             $this->Matricula = $_Matricula;
         }
+
+        public function InsereColaborador($link){
+            $query="INSERT INTO colaborador VALUES(NULL,'".$this->Responsavel."','".$this->Email."','".$this->Telefone."','".$this->CPF."','".$this->Matricula."')";
+            //echo $query;
+            $link->query($query) or die ($link->error);
+            $this->idColaborador = $link->insert_id;
+        }
     }
 
 ?>
