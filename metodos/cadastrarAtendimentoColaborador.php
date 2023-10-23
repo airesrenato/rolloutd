@@ -39,33 +39,48 @@ if(!empty($_POST["Cadastrar"])){
         $Colaborador->SetMatricula($_POST['Matricula']);
 
         $Colaborador->InsereColaborador($link);
-        /*
-        $Atendimento = new Atendimento(NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-        $Atendimento->SetResponsavel($_POST['Responsavel']);
-        $Atendimento->SetEmail($_POST['Email']);
-        $Atendimento->SetDepartamento($_POST['Departamento']);
-        $Atendimento->SetLocalidade($_POST['Localidade']);
-        $Atendimento->SetBackup($_POST['Backup']);
-        $Atendimento->SetDia($_POST['Data']);
+        $idColaborador = $Colaborador->GetidColaborador();
 
-        $extensao = strtolower(substr($_FILES['arquivo']['name'], -4)); //pega a extensao do arquivo
+
+
+
+
+        $Atendimento = new Atendimento(NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+       // $Atendimento->SetResponsavel($_POST['Responsavel']);
+      //  $Atendimento->SetEmail($_POST['Email']);
+       // $Atendimento->SetDepartamento($_POST['Departamento']);
+      //  $Atendimento->SetLocalidade($_POST['Localidade']);
+      //  $Atendimento->SetBackup($_POST['Backup']);
+      //  $Atendimento->SetDia($_POST['Data']);
+
+       
+       
+
+
+
+
+       /* $extensao = strtolower(substr($_FILES['arquivo']['name'], -4)); //pega a extensao do arquivo
         $novo_nome = md5(time()) . $extensao; //define o nome do arquivo
         $diretorio = "../images/termos/"; //define o diretorio para onde enviaremos o arquivo
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
         
-        $Atendimento->SetTermo($novo_nome);
+        $Atendimento->SetTermo($novo_nome);*/
 
     // $Atendimento->SetTermo($_POST['Termo'])
 
 
-
+        $Atendimento->SetStatusAtendimento('Aberto');
         $Atendimento->SetAntigo($idAntigo);
-        $Atendimento->SetNovo($idNovo);
-        $Atendimento->SetidTecnico($_SESSION['idTecnico']);
+        $Atendimento->SetidColaborador($idColaborador);
+
+        $Atendimento->SetNovo(22);
+        $Atendimento->SetidTecnico(1);
+        //$Atendimento->SetNovo($idNovo);
+       // $Atendimento->SetidTecnico($_SESSION['idTecnico']);
 
 
         $Atendimento->InsereAtendimento($link);
-        header('Location:http://'.$host.'/infoprime/rolloutd/index.php'); */
+        header('Location:http://'.$host.'/infoprime/rolloutd/index.php'); 
 
     
 }

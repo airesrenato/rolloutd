@@ -136,6 +136,7 @@
 
         public function InsereAtendimento($link){
             $query="INSERT INTO Atendimento VALUES(NULL,'".$this->Departamento."','".$this->Localidade."','".$this->Backup."','".$this->Dia."','".$this->Termo."','".$this->FtColaboradorEquipamento."','".$this->FtLogado."','".$this->StatusAtendimento."',".$this->Antigo.",".$this->Novo.",".$this->idTecnico.",".$this->idColaborador.")";
+            echo $query;
             $link->query($query);
             $this->idAtendimento = $link->insert_id;
         }
