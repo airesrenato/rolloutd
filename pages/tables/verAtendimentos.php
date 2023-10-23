@@ -36,7 +36,7 @@
 </head>
 
 <body class="theme-red">
-    <!-- Page Loader -->
+    <!-- Page Loader 
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -52,7 +52,7 @@
             <p>Um Momento...</p>
         </div>
     </div>
-    <!-- #END# Page Loader -->
+     #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
@@ -98,7 +98,7 @@
                                     </a>
                                     <ul class="dropdown-menu pull-right">
                                         <?php  
-                                            echo "<li><a href='http://$host/infoprime/rolloutd/pages/forms/cadastrarAtendimentoColaborador.php'>Cadastrar Atendimento</a></li>";
+                                            echo "<li><a href='http://$host/infoprime/rolloutd/pages/forms/cadastrarAtendimentoColaborador.php'>Cadastrar Primeiro Contato</a></li>";
                                         ?>
                                     </ul>
                                 </li>
@@ -132,7 +132,8 @@
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                            $query="SELECT * FROM atendimento a INNER JOIN equipamento e WHERE  a.idAntigo = e.idEquipamento;";
+                                           // $query="SELECT * FROM atendimento a INNER JOIN equipamento e WHERE  a.idAntigo = e.idEquipamento;";
+                                            $query="SELECT * FROM ATENDIMENTO a INNER JOIN Colaborador c ON a.idColaborador = c.idColaborador INNER JOIN equipamento e on a.idAntigo = e.idEquipamento WHERE a.StatusAtendimetno = 'Aberto'";
                                             $resultado=$link->query($query) or die ($link->error);
                                             while($linha = $resultado->fetch_array()){
                                                 echo"  <tr>".
@@ -144,19 +145,7 @@
                                                 
                                                     <td>".$linha["ServiceTag"]."</td>
                                                 ";
-                                                $test = $linha["idNovo"];
-                                                $query2="SELECT * FROM atendimento a INNER JOIN equipamento e ON a.idNovo = e.idEquipamento WHERE e.idEquipamento = $test;";
-                                                //echo $query2;
-                                                $resultado2=$link->query($query2) or die ($link->error);
-                                                while($linha2 = $resultado2->fetch_array()){
-                                                    echo" <td>".$linha2["VC"]."</td>
-                                                       <td>".$linha2["ServiceTag"]."</td>
-                                                    ";
-                                                }
-                                                echo"
-
-                                                    <td> <a href='http://$host/infoprime/rolloutd/images/termos/".$linha["Termo"]."' target='_blank'>Ver Termo</td>
-                                                </tr>";
+                                               
                                             }
                                         ?> 
                                     </tbody>
@@ -182,7 +171,7 @@
                                     </a>
                                     <ul class="dropdown-menu pull-right">
                                         <?php  
-                                            echo "<li><a href='http://$host/infoprime/rolloutd/pages/forms/cadastrarAtendimento2.php'>Cadastrar Atendimento</a></li>";
+                                            echo "<li><a href='http://$host/infoprime/rolloutd/pages/forms/cadastrarAtendimentoColaborador.php'>Cadastrar Primeiro Contato</a></li>";
                                         ?>
                                     </ul>
                                 </li>
@@ -195,60 +184,41 @@
                                         <tr>
                                             <th>Responsavel</th>
                                             <th>Email</th>
-                                            <th>Departamento</th>
-                                            <th>Localidade</th>
-                                            <th>Backup</th>
-                                            <th>Dia</th>
+                                            <th>Telefone</th>
+                                           
+                                            <th>Localizacao</th>
                                             <th>VC</th>
                                             <th>ServiceTag</th>
-                                            <th>VC</th>
-                                            <th>ServiceTag</th>
-                                            <th>Termo</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Responsavel</th>
                                             <th>Email</th>
-                                            <th>Departamento</th>
-                                            <th>Localidade</th>
-                                            <th>Backup</th>
-                                            <th>Dia</th>
+                                            <th>Telefone</th>
+                                           
+                                            <th>Localizacao</th>
                                             <th>VC</th>
                                             <th>ServiceTag</th>
-                                            <th>VC</th>
-                                            <th>ServiceTag</th>
-                                            <th>Termo</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                            $query="SELECT * FROM atendimento a INNER JOIN equipamento e WHERE  a.idAntigo = e.idEquipamento;";
+                                           // $query="SELECT * FROM atendimento a INNER JOIN equipamento e WHERE  a.idAntigo = e.idEquipamento;";
+                                            $query="SELECT * FROM ATENDIMENTO a INNER JOIN Colaborador c ON a.idColaborador = c.idColaborador INNER JOIN equipamento e on a.idAntigo = e.idEquipamento WHERE a.StatusAtendimetno = 'Encerrado'";
                                             $resultado=$link->query($query) or die ($link->error);
                                             while($linha = $resultado->fetch_array()){
                                                 echo"  <tr>".
                                                     "<td>".$linha["Responsavel"]."</td>
                                                     <td>".$linha["Email"]."</td>
-                                                    <td>".$linha["Departamento"]."</td>
-                                                    <td>".$linha["Localidade"]."</td>
-                                                    <td>".$linha["Backup"]."</td>
-                                                    <td>".$linha["Dia"]."</td>
+                                                    <td>".$linha["Telefone"]."</td>
+                                                    <td>".$linha["Localizacao"]."</td>
                                                     <td>".$linha["VC"]."</td>
+                                                
                                                     <td>".$linha["ServiceTag"]."</td>
                                                 ";
-                                                $test = $linha["idNovo"];
-                                               $query2="SELECT * FROM atendimento a INNER JOIN equipamento e ON a.idNovo = e.idEquipamento WHERE e.idEquipamento = $test;";
-                                                //echo $query2;
-                                                $resultado2=$link->query($query2) or die ($link->error);
-                                                while($linha2 = $resultado2->fetch_array()){
-                                                    echo" <td>".$linha2["VC"]."</td>
-                                                       <td>".$linha2["ServiceTag"]."</td>
-                                                    ";
-                                                }
-                                                echo"
-
-                                                    <td> <a href='http://$host/infoprime/rolloutd/images/termos/".$linha["Termo"]."' target='_blank'>Ver Termo</td>
-                                                </tr>";
+                                               
                                             }
                                         ?> 
                                     </tbody>
@@ -258,6 +228,9 @@
                     </div>
                 </div>
             </div>
+            <!-- #END# Exportable Table -->
+            <!-- Exportable Table -->
+        
             <!-- #END# Exportable Table -->
         </div>
     </section>

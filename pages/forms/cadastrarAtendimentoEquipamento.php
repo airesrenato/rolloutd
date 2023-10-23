@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Cadastrar Primeiro Contato</title>
+    <title>Cadastrar Atendimento</title>
 
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
@@ -110,74 +110,19 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Cadastrar Primeiro Contato
+                                Cadastrar Atendimento
                             </h2>
                         </div>
                         <div class="body">
-                            <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="card">
-                                        <form method="post" action="../../metodos/cadastrarAtendimentoColaborador.php" enctype="multipart/form-data">
-                                            <div class="header">
-                                                <h2>EQUIPAMENTO ANTIGO</h2>
-                                            </div>
-                                            <div class="body">
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" class="form-control" name="ModeloAntigo" >
-                                                        <label class="form-label">Modelo</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" class="form-control" name="ServiceTagAntigo" >
-                                                        <label class="form-label">Service Tag</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" class="form-control" name="VCAntigo" >
-                                                        <label class="form-label">VC Antigo</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" class="form-control" name="Tipo" >
-                                                        <label class="form-label">Tipo</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" class="form-control" name="Localizacao" >
-                                                        <label class="form-label">Localização</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" class="form-control" name="Situacao" >
-                                                        <label class="form-label">Situação</label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" class="form-control" name="Observacao" >
-                                                        <label class="form-label">Observação</label>
-                                                    </div>
-                                                </div>
-                                                
-                                                
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
                             
                         </div> 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
-                            <div class="header">
-                                <h2>RESPONSÁVEL PELO EQUIPAMENTO</h2>
-                            </div>
+                            
                             <div class="body">
+                            
+
+                            
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                             <input type="text" class="form-control" name="Responsavel" >
@@ -211,7 +156,24 @@
                                       
                                 </div>
                              </div>
+                             <div class="col-md-12">
+                                    <p>
+                                        <b>VC</b> 
+                                    </p> 
+                                </div>
+                                    <select class="form-control show-tick" name="vc" data-live-search="true">
+                                        <?php
+                                            $query = "SELECT * FROM equipamento";
+                                            $resultado = $link->query($query) or die($link->error);
+                                            while($linha = $resultado->fetch_array()){
+                                                echo "<option value='".$linha["idEquipamento"]."'> ".$linha["VC"]."</option>";
+                                            }
+                                        ?>
+                                    </select>
                         </div>
+
+
+
                         <input type="submit" class="btn btn-primary m-t-15 waves-effect" name="Cadastrar" value="Cadastrar">
                 </form>
             </div>
