@@ -121,6 +121,7 @@
                                             <th>Localização</th>
                                             <th>Situação</th>
                                             <th>Observação</th>
+                                            <th>Editar</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -132,6 +133,7 @@
                                             <th>Localização</th>
                                             <th>Situação</th>
                                             <th>Observação</th>
+                                            <th>Editar</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
