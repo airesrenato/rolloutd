@@ -1,5 +1,8 @@
+CREATE DATABASE rolloutdV2; 
+USE rolloutdV2;
+
 CREATE TABLE Tecnico(
-    idTecnico INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+    idTecnico INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(45),
     Senha VARCHAR(256),
     Email VARCHAR(45),
@@ -33,6 +36,7 @@ CREATE TABLE Acessorio(
     idEquipamento INT,
     FOREIGN KEY (idEquipamento) REFERENCES Equipamento (idEquipamento)
 );
+
 CREATE TABLE Avaria(
     idAvaria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Descricao VARCHAR(450),
@@ -50,6 +54,7 @@ CREATE TABLE Atendimento(
     Termo VARCHAR(100),
     FotoColaboradorEquipamento VARCHAR(100),
     FotoLogado VARCHAR(100),
+    StatusAtendimento VARCHAR(45),
     idAntigo INT,
     idNovo INT,
     idTecnico INT,
@@ -59,3 +64,13 @@ CREATE TABLE Atendimento(
     FOREIGN KEY (idTecnico) REFERENCES Tecnico(idTecnico),
     FOREIGN KEY (idColaborador) REFERENCES Colaborador(idColaborador)
 );
+
+insert into Tecnico values (null,'Luana',md5('12345'),'luana@infoprimers.com.br',null);
+insert into Colaborador values(null,'João Teste','joao@gmail.com','(51) 9xxxx-xxxx','xxx.xxx.xxx-xx','YYYY');
+insert into Atendimento values(null,'Administrativo','Esteio','Sim','23/10/2023',null,null,null, 'Aberto', 1,2,1,1);
+insert into atendimento values(null,null,null,null,null,null,null,null,'Aberto',2,null,null,1);
+
+insert into Colaborador values(null,'Lucas','lucas@gmail.com','(51) 9xxxx-xxxx','xxx.xxx.xxx-xx','1234');
+insert into Equipamento values(null,'OptiPlex 3060','VC200','ServiceTag01','Desktop','Infoprime','Ok',null);
+insert into Equipamento values(null,'OptiPlex 3060','VC201','ServiceTag02','Desktop','Infoprime','Ok',null);
+insert into Atendimento values(null,null,null,null,null,null,null,null,'Aberto',5,null,null,2);
