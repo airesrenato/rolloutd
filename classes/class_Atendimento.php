@@ -109,13 +109,13 @@
             $this->Observacao = $_Observacao;
         }
        */
-        public function GetAntigo():string{
+        public function GetAntigo():int{
             return $this->Antigo;
         }
         public function SetAntigo($_Antigo):void{
             $this->Antigo = $_Antigo;
         }
-        public function GetNovo():string{
+        public function GetNovo():int{
             return $this->Novo;
         }
         public function SetNovo($_Novo):void{
@@ -136,10 +136,45 @@
 
         public function InsereAtendimento($link){
             $query="INSERT INTO Atendimento VALUES(NULL,'".$this->Departamento."','".$this->Localidade."','".$this->Backup."','".$this->Dia."','".$this->Termo."','".$this->FtColaboradorEquipamento."','".$this->FtLogado."','".$this->StatusAtendimento."',".$this->Antigo.",".$this->Novo.",".$this->idTecnico.",".$this->idColaborador.")";
-            echo $query;
             $link->query($query);
             $this->idAtendimento = $link->insert_id;
         }
 
+        public function GetAtendimento($link){
+            $query="SELECT * FROM Atendimento WHERE idAtendimento = $this->idAtendimento";
+            $resultado= $link->query($query) or die ($link->error);
+            $linha = $resultado->fetch_array();
+
+            $this->idAtendimento = $linha["idAtendimento"];
+            $this->Departamento = $linha["Departamento"];
+            $this->Localidade = $linha["Localidade"];
+            $this->Backup = $linha["Backup"];
+            $this->Dia = $linha["Dia"];
+            $this->Termo = $linha["Termo"];
+            $this->FtColaboradorEquipamento = $linha["FotoColaboradorEquipamento"];
+            $this->FtLogado = $linha["FotoLogado"];
+            $this->StatusAtendimento = $linha["StatusAtendimento"];
+            $this->Antigo = $linha["idAntigo"];
+            $this->Novo = $linha["idNovo"];
+            $this->idTecnico = $linha["idTecnico"];
+            $this->idColaborador = $linha["idColaborador"];
+        }
+
+        public function EncerraAtendimento($link) {
+            $query = "UPDATE Atendimento SET Departamento = ?, Localidade = ?, Backup = ?, Dia = ?, Termo = ?, FotoColaboradorEquipamento = ?, FotoLogado = ?, StatusAtendimento = ?, idAntigo = ?, idNovo = ?, idTecnico = ?, idColaborador = ? WHERE idAtendimento = ?";
+            
+            $stmt = $link->prepare($query);
+            $stmt->bind_param("ssssssssiiiii", $this->Departamento, $this->Localidade, $this->Backup, $this->Dia, $this->Termo, $this->FtColaboradorEquipamento, $this->FtLogado, $this->StatusAtendimento, $this->Antigo, $this->Novo, $this->idTecnico, $this->idColaborador, $this->idAtendimento);
+            
+            if ($stmt->execute()) {
+                // A consulta foi executada com sucesso
+            } else {
+                // Tratamento de erro, se necessário
+                echo "Erro ao executar a consulta: " . $stmt->error;
+            }
+            
+            $stmt->close();
+        }
+       
     }
 ?>
