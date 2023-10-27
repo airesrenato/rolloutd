@@ -66,11 +66,16 @@ CREATE TABLE Atendimento(
 );
 
 insert into Tecnico values (null,'Luana',md5('12345'),'luana@infoprimers.com.br',null);
+insert into Tecnico values (null,'Renato', md5('12345'),'renato@infoprimers.com.br',null);
+
 insert into Colaborador values(null,'João Teste','joao@gmail.com','(51) 9xxxx-xxxx','xxx.xxx.xxx-xx','YYYY');
+
 insert into Atendimento values(null,'Administrativo','Esteio','Sim','23/10/2023',null,null,null, 'Aberto', 1,2,1,1);
 insert into atendimento values(null,null,null,null,null,null,null,null,'Aberto',2,null,null,1);
 
 insert into Colaborador values(null,'Lucas','lucas@gmail.com','(51) 9xxxx-xxxx','xxx.xxx.xxx-xx','1234');
+
 insert into Equipamento values(null,'OptiPlex 3060','VC200','ServiceTag01','Desktop','Infoprime','Ok',null);
 insert into Equipamento values(null,'OptiPlex 3060','VC201','ServiceTag02','Desktop','Infoprime','Ok',null);
+
 insert into Atendimento values(null,null,null,null,null,null,null,null,'Aberto',5,null,null,2);

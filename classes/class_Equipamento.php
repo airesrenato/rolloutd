@@ -11,8 +11,7 @@
         private $Situacao;
         private $Observacao;
 
-        function __construct ($_idEquipamento,$_Modelo,$_VC,$_ServiceTag,
-            $_Tipo,$_Localizacao,$_Situacao,$_Observacao    ){
+        function __construct ($_idEquipamento,$_Modelo,$_VC,$_ServiceTag, $_Tipo,$_Localizacao,$_Situacao,$_Observacao){
             $this->idEquipamento = $_idEquipamento;
             $this->Modelo = $_Modelo;
             $this->VC = $_VC;
@@ -71,12 +70,6 @@
         public function SetObservacao($_Observacao):void{
             $this->Observacao = $_Observacao;
         }
-
-
-
-
-
-
 
         public function InsereEquipamento($link){
             $query="INSERT INTO equipamento VALUES(NULL,'".$this->Modelo."','".$this->VC."','".$this->ServiceTag."','".$this->Tipo."','".$this->Localizacao."','".$this->Situacao."','".$this->Observacao."')";
