@@ -117,7 +117,7 @@
                             <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
-                                        <form method="post" action="../../metodos/cadastrarAtendimentoColaborador.php" enctype="multipart/form-data">
+                                        <form method="post" action="../../metodos/cadastrarPrimeiroContato.php" enctype="multipart/form-data">
                                             <div class="header">
                                                 <h2>EQUIPAMENTO ANTIGO</h2>
                                             </div>
