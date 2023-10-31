@@ -26,7 +26,7 @@ $host = 'localhost';
                         <ul class="ml-menu">
                             <li class="">
                                 <?php  
-                                    echo "<a href='http://localhost/infoprime/rolloutd/pages/forms/cadastrarAtendimentoColaborador.php'>Primeiro Contato</a>";
+                                    echo "<a href='http://localhost/infoprime/rolloutd/pages/forms/cadastrarPrimeiroContato.php'>Primeiro Contato</a>";
                                 ?>
                             </li>
                             <li class="">
